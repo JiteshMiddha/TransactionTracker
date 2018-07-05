@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_service_name: MyString
+  request_type: MyString
+  created_at: MyString
+  user_email: MyString
+  inc_id: 1
+  transaction_id: MyString
+  amount: 1
+  action: MyString
+
+two:
+  from_service_name: MyString
+  request_type: MyString
+  created_at: MyString
+  user_email: MyString
+  inc_id: 1
+  transaction_id: MyString
+  amount: 1
+  action: MyString

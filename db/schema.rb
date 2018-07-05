@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_092448) do
+ActiveRecord::Schema.define(version: 2018_07_05_192325) do
 
   create_table "transaction_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type"
+    t.string "transactionType"
     t.string "transactionId"
     t.string "fromServiceName"
     t.datetime "created_at", null: false
@@ -28,6 +28,30 @@ ActiveRecord::Schema.define(version: 2018_07_05_092448) do
     t.integer "amount"
     t.string "action"
     t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transaction_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "from_service_name"
+    t.string "request_type"
+    t.datetime "created_at", null: false
+    t.string "user_email"
+    t.integer "inc_id"
+    t.string "transaction_id"
+    t.integer "amount"
+    t.string "action"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trnsaction_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "from_service_name"
+    t.string "request_type"
+    t.datetime "created_at", null: false
+    t.string "user_email"
+    t.integer "inc_id"
+    t.string "transaction_id"
+    t.integer "amount"
+    t.string "action"
     t.datetime "updated_at", null: false
   end
 

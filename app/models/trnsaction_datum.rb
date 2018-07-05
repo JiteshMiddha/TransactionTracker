@@ -1,0 +1,2 @@
+class TrnsactionDatum < ApplicationRecord
+end

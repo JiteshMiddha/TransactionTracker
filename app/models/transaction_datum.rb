@@ -1,2 +1,0 @@
-class TransactionDatum < ApplicationRecord
-end
