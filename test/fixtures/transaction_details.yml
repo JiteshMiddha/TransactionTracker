@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  createdAt: MyString
+  userEmail: MyString
+  incId: 1
+  transactionId: MyString
+  amount: 1
+  action: MyString
+
+two:
+  createdAt: MyString
+  userEmail: MyString
+  incId: 1
+  transactionId: MyString
+  amount: 1
+  action: MyString

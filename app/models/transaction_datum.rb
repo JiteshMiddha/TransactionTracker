@@ -1,0 +1,2 @@
+class TransactionDatum < ApplicationRecord
+end
