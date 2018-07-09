@@ -14,6 +14,7 @@ module Api
 			# end
 
 
+
 			def create				
 				# transaction = TransactionDatum.new(transaction_params
 
@@ -22,17 +23,19 @@ module Api
 
 					text = ''
 					if check1hour > 3 
-						text = "3 transactions in 1 hour limit crossed"
+						text = "You have done " + check1hour.to_s + " transactions in last 1 hour. The limit is 3."
 					end
 					if checkTotalAmountIn24Hours > 10000 
 						text = text + "\nDebit Amount in 24 hours crossed 10,000"
 					end
 					
-
-
 					render json: {status: 'success', details: text},status: :ok
 				else
 					render json: {status: 'error', message: 'transaction error'},status: :unprocessable_entry
+				end
+
+				if text != ''
+					sendMail(transactionDetails.user_email, text)
 				end
 			end
 
@@ -49,14 +52,11 @@ module Api
 				return total
 			end
 
-			def sendMail(text)
-
-
+			
+			def sendMail(email, text)
+				TransactionMailer.send_email(email, text).deliver
 			end
-			# private
-			# def transaction_params
-			# 	params.permit(:transaction_type, :transactionId, :fromServiceName)
-			# end
+			
 		end
 	end
 end
