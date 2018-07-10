@@ -19,6 +19,7 @@ module Api
 				# transaction = TransactionDatum.new(transaction_params
 
 				transactionDetails = TransactionRequest.new(:from_service_name => params[:from_service_name], :request_type => params[:data][:type], :created_at => params[:data][:data][:created_at], :user_email => params[:data][:data][:user_email], :inc_id => params[:data][:data][:inc_id], :transaction_id => params[:data][:data][:transaction_id], :amount => params[:data][:data][:amount], :action => params[:data][:data][:action])
+				
 				if transactionDetails.save
 
 					text = ''
@@ -37,6 +38,8 @@ module Api
 				if text != ''
 					sendMail(transactionDetails.user_email, text)
 				end
+				
+				
 			end
 
 
@@ -54,7 +57,8 @@ module Api
 
 			
 			def sendMail(email, text)
-				TransactionMailer.send_email(email, text).deliver
+				# TransactionMailer.send_email(email, text).deliver_later
+				SendEmailJob.perform_later(email, text)
 			end
 			
 		end
